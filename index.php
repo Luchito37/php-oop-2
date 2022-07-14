@@ -3,7 +3,7 @@
 require_once __DIR__ . "/classi/custemer.php";
 
 
-$customer1 = new Customer("Luca", "Matteotti", 20, "lucamatteotti01@gmail.com");
+$customer1 = new Customer("Luca", "Matteotti", 20, "lucamatteotti01@gmail.com", "registrato");
 
 var_dump($customer1)
 ?>

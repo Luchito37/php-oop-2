@@ -1,16 +1,16 @@
 <?php
-class Customer 
+class Customer
 {
     protected $name;
     protected $lastName;
     protected $age;
     protected $email;
     protected $registred;
-    
+
 
     function __construct($_name, $_lastName, $_age, $_email, $_registred)
     {
-        $this->setName($_name) ;
+        $this->setName($_name);
         $this->setLastName($_lastName);
         $this->setAge($_age);
         $this->setEmail($_email);
@@ -18,10 +18,10 @@ class Customer
     }
     /**
      * Get the value of name
-     */ 
+     */
     public function getName()
     {
-        
+
         return $this->name;
     }
 
@@ -29,22 +29,22 @@ class Customer
      * Set the value of name
      *
      * @return  self
-     */ 
+     */
     public function setName($name)
     {
-        if( strlen($this->name) < 3 ){
+        if (strlen($this->name) < 3) {
             $this->name = "not enough longer";
-        }else{
+        } else {
             $this->name = $name;
         }
-        
+
 
         return $this->name = $name;
     }
 
     /**
      * Get the value of lastName
-     */ 
+     */
     public function getLastName()
     {
         return $this->lastName;
@@ -54,12 +54,12 @@ class Customer
      * Set the value of lastName
      *
      * @return  self
-     */ 
+     */
     public function setLastName($lastName)
     {
-        if( strlen($this->lastName) < 3 ){
+        if (strlen($this->lastName) < 3) {
             $this->lastName = "not enough longer";
-        }else{
+        } else {
             $this->lastName = $lastName;
         }
 
@@ -68,7 +68,7 @@ class Customer
 
     /**
      * Get the value of age
-     */ 
+     */
     public function getAge()
     {
         return $this->age;
@@ -78,13 +78,13 @@ class Customer
      * Set the value of age
      *
      * @return  self
-     */ 
+     */
     private function setAge($age)
-    {   
-        
-        if (!is_numeric($this->age)){
+    {
+
+        if (!is_numeric($this->age)) {
             $this->age = "pls insert a number";
-        }else{
+        } else {
             $this->age = $age;
         }
 
@@ -93,7 +93,7 @@ class Customer
 
     /**
      * Get the value of email
-     */ 
+     */
     public function getEmail()
     {
         return $this->email;
@@ -103,7 +103,7 @@ class Customer
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setEmail($email)
     {
         $chiocciola = strstr($email, "@");
@@ -112,17 +112,17 @@ class Customer
 
         if (!$chiocciola || !$punto) {
             return "Pls checked you email";
-        }else{
+        } else {
             $this->email = $email;
         };
-        
+
 
         return $this;
     }
 
     /**
      * Get the value of registred
-     */ 
+     */
     public function getRegistred()
     {
         return $this->registred;
@@ -132,7 +132,7 @@ class Customer
      * Set the value of registred
      *
      * @return  self
-     */ 
+     */
     public function setRegistred($registred)
     {
 
@@ -143,7 +143,7 @@ class Customer
 
     public function getFullName()
     {
-        return  "UTENTE:".  $this->name . " " . $this->lastName ;
+        return  "UTENTE:" .  $this->name . " " . $this->lastName;
     }
 
     public function getFullCaratteristic()
@@ -156,6 +156,7 @@ class Customer
         $nome = $this->getFullName();
         $eta = $this->getAge();
         $email = $this->getEmail();
+        $registrazione = $this->registred;
 
 ?>
 
@@ -169,13 +170,18 @@ class Customer
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item ">
                                 <div>
-                                    <h2 class="d-inline-block">ETA' : </h2> <h4 class="d-inline-block"> <?php echo $eta  ?></h4>
+                                    <h2 class="d-inline-block">ETA' : </h2>
+                                    <h4 class="d-inline-block"> <?php echo $eta  ?></h4>
                                 </div>
                                 <div>
-                                    <h2 class="d-inline-block">EMAIL : </h2><h4 class="d-inline-block"><?php echo $email  ?></h4>
+                                    <h2 class="d-inline-block">EMAIL : </h2>
+                                    <h4 class="d-inline-block"><?php echo $email  ?></h4>
                                 </div>
-                                
-                                
+                                <div>
+                                    <h2 class="d-inline-block">STATUS : </h2>
+                                    <h4 class="d-inline-block"><?php echo $registrazione  ?></h4>
+                                </div>
+
                             </li>
                         </ul>
                     </div>
@@ -186,5 +192,4 @@ class Customer
 
 <?php
     }
-
 }
