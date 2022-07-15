@@ -6,6 +6,7 @@ class Customer
     protected $age;
     protected $email;
     protected $registred;
+    protected Cart $cart
 
 
     function __construct($_name, $_lastName, $_age, $_email, $_registred)
