@@ -5,8 +5,8 @@ class Giochi extends Product {
     private $productType;
     private $material;
 
-    public function __construct($_name, $price, $_material){
-        parent::__construct($_name, $price);
+    public function __construct($_name, $_price, $_material){
+        parent::__construct($_name, $_price);
         $this->setmaterial($_material);
     }
 
