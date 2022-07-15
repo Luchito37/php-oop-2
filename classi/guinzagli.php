@@ -5,8 +5,8 @@ class Guinzagli extends Product {
     private $lunghezza;
     private $brand;
 
-    public function __construct($_name, $price, $_brand){
-        parent::__construct($_name, $price);
+    public function __construct($_name, $_price, $_brand){
+        parent::__construct($_name, $_price);
         $this->setbrand($_brand);
     }
 
