@@ -18,7 +18,7 @@ class Cart
         $total = 0;
 
         foreach ($this->products as $product) {
-            $total += $product->setPrice();
+            $total += $product->getPrice();
         }
 
         return $total;

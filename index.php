@@ -21,7 +21,9 @@ $products = [
 
 $customer1->cart->add($products[1], $products[3]);
 
-var_dump($customer1->paymentCard, $products, $customer1->cart)
+$customer1->cart->getTotal();
+
+var_dump($customer1->paymentCard, $products, $customer1->cart, $customer1->cart->getTotal())
 ?>
 
 <!DOCTYPE html>
