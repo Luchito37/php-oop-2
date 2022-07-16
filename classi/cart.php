@@ -1,53 +1,31 @@
 <?php
 
-
-class Cart 
+class Cart
 {
-    protected $list = [];
-    protected $total;
+    private $products = [];
 
-
-    public function __construct($_list, $_total){
-        $this->setList($_list);
-        $this->setTotal($_total);
-    }
-    /**
-     * Get the value of list
-     */ 
-    public function getList()
+    public function add(...$_products)
     {
-        return $this->list;
+        array_push($this->products, ...$_products);
     }
 
-    /**
-     * Set the value of list
-     *
-     * @return  self
-     */ 
-    public function setList($list)
+    public function remove($product)
     {
-        $this->list = $list;
-
-        return $this;
     }
 
-    /**
-     * Get the value of total
-     */ 
-    public function getTotal()
+    public function getTotal($discount = 0)
     {
-        return $this->total;
+        $total = 0;
+
+        foreach ($this->products as $product) {
+            $total += $product->setPrice();
+        }
+
+        return $total;
     }
 
-    /**
-     * Set the value of total
-     *
-     * @return  self
-     */ 
-    public function setTotal($total)
+    public function getProducts()
     {
-        $this->total = $total;
-
-        return $this;
+        return $this->products;
     }
 }

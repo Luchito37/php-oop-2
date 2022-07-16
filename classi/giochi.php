@@ -1,18 +1,26 @@
 <?php
-require_once 'Product.php';
+require_once 'product.php';
 
 class Giochi extends Product {
     private $productType;
     private $material;
 
-    public function __construct($_name, $_price, $_material){
+    public function __construct( $_material, $_productType, $_name, $_price){
         parent::__construct($_name, $_price);
         $this->setmaterial($_material);
+        $this->setProductType($_productType);
     }
 
     public function getProductType()
     {
         return $this->productType;
+    }
+
+    public function setProductType($productType)
+    {
+        $this->productType = $productType;
+
+        return $this;
     }
 
     public function getmaterial()
@@ -26,6 +34,7 @@ class Giochi extends Product {
 
         return $this;
     }
+    
 }
 
 ?>

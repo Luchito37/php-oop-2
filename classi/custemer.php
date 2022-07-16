@@ -1,40 +1,41 @@
 <?php
+
+require_once __DIR__ . '/cart.php';
+require_once __DIR__ . '/paymentContainer.php';
 class Customer
 {
     protected $name;
     protected $lastName;
     protected $age;
     protected $email;
-    protected $registred;
-    protected Cart $cart
+    protected $registered = "non registrato";
+    public Cart $cart;
+    public PaymentContainer $paymentCard;
 
 
-    function __construct($_name, $_lastName, $_age, $_email, $_registred)
+
+    function __construct($_name = null, $_lastName = null, $_age, $_email, $_registered)
     {
+        $this->cart = new Cart();
+        $this->paymentCard = new PaymentContainer();
         $this->setName($_name);
         $this->setLastName($_lastName);
         $this->setAge($_age);
         $this->setEmail($_email);
-        $this->setRegistred($_registred);
+        $this->setRegistered($_registered);
     }
-    /**
-     * Get the value of name
-     */
+
+
     public function getName()
     {
 
         return $this->name;
     }
 
-    /**
-     * Set the value of name
-     *
-     * @return  self
-     */
     public function setName($name)
     {
         if (strlen($this->name) < 3) {
-            $this->name = "not enough longer";
+            $this->name = "";
         } else {
             $this->name = $name;
         }
@@ -43,23 +44,15 @@ class Customer
         return $this->name = $name;
     }
 
-    /**
-     * Get the value of lastName
-     */
     public function getLastName()
     {
         return $this->lastName;
     }
 
-    /**
-     * Set the value of lastName
-     *
-     * @return  self
-     */
     public function setLastName($lastName)
     {
         if (strlen($this->lastName) < 3) {
-            $this->lastName = "not enough longer";
+            $this->lastName = "";
         } else {
             $this->lastName = $lastName;
         }
@@ -67,19 +60,13 @@ class Customer
         return $this->lastName = $lastName;
     }
 
-    /**
-     * Get the value of age
-     */
+    
     public function getAge()
     {
         return $this->age;
     }
 
-    /**
-     * Set the value of age
-     *
-     * @return  self
-     */
+    
     private function setAge($age)
     {
 
@@ -92,19 +79,13 @@ class Customer
         return $this->age = $age;
     }
 
-    /**
-     * Get the value of email
-     */
+    
     public function getEmail()
     {
         return $this->email;
     }
 
-    /**
-     * Set the value of email
-     *
-     * @return  self
-     */
+    
     public function setEmail($email)
     {
         $chiocciola = strstr($email, "@");
@@ -121,25 +102,27 @@ class Customer
         return $this;
     }
 
-    /**
-     * Get the value of registred
-     */
-    public function getRegistred()
+    public function getRegistered()
     {
-        return $this->registred;
+        return $this->registered;
     }
 
-    /**
-     * Set the value of registred
-     *
-     * @return  self
-     */
-    public function setRegistred($registred)
+
+    private function setRegistered($registered)
     {
 
-        $this->registred = $registred;
+        if ($this->name && $this->lastName ) {
+                $this->registered = "registrato";
+            }
 
         return $this;
+    }
+
+    public function register($_name, $_lastName)
+    {
+        $this->setName($_name);
+        $this->setLastName($_lastName);
+        $this->setRegistered(true);
     }
 
     public function getFullName()
@@ -152,12 +135,13 @@ class Customer
         return "<h2>Box Office :</h2> " . $this->boxOffice . "<h2>Data d'uscita:</h2>" . $this->dataUscita . " <h2>Durata :</h2>" . $this->durata;
     }
 
+
     public function printCard()
     {
         $nome = $this->getFullName();
         $eta = $this->getAge();
         $email = $this->getEmail();
-        $registrazione = $this->registred;
+        $registrazione = $this->registered;
 
 ?>
 

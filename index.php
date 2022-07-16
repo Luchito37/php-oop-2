@@ -1,11 +1,27 @@
 <?php
 
 require_once __DIR__ . "/classi/custemer.php";
+require_once "classi/guinzagli.php";
+require_once "classi/giochi.php";
+require_once "classi/payment.php";
+
+$metodoPagamento = key_exists("metodo", $_GET) ? (int) $_GET["metodo"] : null;
 
 
 $customer1 = new Customer("Luca", "Matteotti", 20, "lucamatteotti01@gmail.com", "registrato");
 
-var_dump($customer1)
+$customer1->paymentCard->add(new CreditCard(CreditCard::$MASTER_CARD, "576347674634763746", "784", "12/22"));
+
+$products = [
+    new Guinzagli("3m","DIVO", "Divo", 34.50),
+    new Guinzagli("5m","Julius-K9","Julius-K9", 40),
+    new Giochi( "Gomma", "Osso", "Ossarello",5),
+    new Giochi( "Cotone", "Corda", "Funello",10),
+    ];
+
+$customer1->cart->add($products[1], $products[3]);
+
+var_dump($customer1->paymentCard, $products, $customer1->cart)
 ?>
 
 <!DOCTYPE html>
