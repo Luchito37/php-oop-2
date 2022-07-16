@@ -10,7 +10,7 @@ $metodoPagamento = key_exists("metodo", $_GET) ? (int) $_GET["metodo"] : null;
 
 $customer1 = new Customer("Luca", "Matteotti", 20, "lucamatteotti01@gmail.com", "registrato");
 
-$customer1->addPayment(new CreditCard(CreditCard::$MASTER_CARD, "576347674634763746", "784", "12/22"));
+$customer1->addPayment(new CreditCard(CreditCard::$MASTER_CARD, "6748392002377436638", "794", "27/08'"));
 
 $products = [
     new Guinzagli("3m","DIVO", "Divo", 34.50),
@@ -23,7 +23,7 @@ $customer1->addProduct($products[1], $products[3]);
 
 $customer1->getTotal();
 
-var_dump($customer1)
+var_dump($customer1, $customer1->getTotal())
 ?>
 
 <!DOCTYPE html>
