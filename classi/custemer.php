@@ -118,12 +118,6 @@ class Customer
         return $this;
     }
 
-    public function register($_name, $_lastName)
-    {
-        $this->setName($_name);
-        $this->setLastName($_lastName);
-        $this->setRegistered(true);
-    }
 
     public function getFullName()
     {
